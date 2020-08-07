@@ -126,13 +126,6 @@ pres_sent <- stops_sotu %>%
   spread(sentiment, n, fill = 0) %>%
   mutate(sentiment = positive - negative) %>%
   arrange(year)
-
-sentiment <- unt_sotu%>%
-  filter(year>1929 & year<1945) %>%
-  group_by(president) %>%
-  inner_join(get_sentiments("bing")) %>% 
-  count(sentiment) %>% 
-  spread(sentiment, n, fill = 0)
   
 pres_sent$President <- pres_sent$president
 
